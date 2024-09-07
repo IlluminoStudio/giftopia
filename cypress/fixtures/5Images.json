@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "id": "yHfrQ7rnXRIib7koQz",
+      "title": "Football GIF",
+      "images": {
+        "fixed_width": {
+          "url": "https://media2.giphy.com/media/yHfrQ7rnXRIib7koQz/giphy.gif?cid=613e78cazsqcq2093q2vtv4hbsob36r5ahk6xfekj3qedce4&ep=v1_gifs_trending&rid=giphy.gif&ct=g"
+        }
+      }
+    },
+    {
+      "id": "Ic1M5Mc5DmOWc",
+      "title": "Good Night Kiss GIF",
+      "images": {
+        "fixed_width": {
+          "url": "https://media2.giphy.com/media/Ic1M5Mc5DmOWc/200w.gif?cid=613e78cazsqcq2093q2vtv4hbsob36r5ahk6xfekj3qedce4&ep=v1_gifs_trending&rid=200w.gif&ct=g"
+        }
+      }
+    },
+    {
+      "id": "Uk061VK3fszBv2II8v",
+      "title": "Voting North Carolina GIF",
+      "images": {
+        "fixed_width": {
+          "url": "https://media3.giphy.com/media/Uk061VK3fszBv2II8v/200w.gif?cid=613e78cazsqcq2093q2vtv4hbsob36r5ahk6xfekj3qedce4&ep=v1_gifs_trending&rid=200w.gif&ct=g"
+        }
+      }
+    },
+    {
+      "id": "2TOi6OJP04FDu1x34F",
+      "title": "Happy Birthday GIF",
+      "images": {
+        "fixed_width": {
+          "url": "https://media1.giphy.com/media/2TOi6OJP04FDu1x34F/200w.gif?cid=613e78cazsqcq2093q2vtv4hbsob36r5ahk6xfekj3qedce4&ep=v1_gifs_trending&rid=200w.gif&ct=g"
+        }
+      }
+    },
+    {
+      "id": "vJJVZcM1oO18ZwrtJl",
+      "title": "Berry GIF",
+      "images": {
+        "fixed_width": {
+          "url": "https://media1.giphy.com/media/vJJVZcM1oO18ZwrtJl/200w.gif?cid=613e78cazsqcq2093q2vtv4hbsob36r5ahk6xfekj3qedce4&ep=v1_gifs_trending&rid=200w.gif&ct=g"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "status": 200,
+    "msg": "OK",
+    "response_id": "ldtnah29y6806fnpj0pg0ycpw7vd6pea7wg1xbci"
+  }
+}

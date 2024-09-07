@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": "jsBZyXc3IcwC8u4A3J",
+      "title": "Ice Cream GIF",
+      "images": {
+        "fixed_width": {
+          "url": "https://media2.giphy.com/media/jsBZyXc3IcwC8u4A3J/200w.gif?cid=613e78caldtnah29y6806fnpj0pg0ycpw7vd6pea7wg1xbci&ep=v1_gifs_search&rid=200w.gif&ct=g"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "status": 200,
+    "msg": "OK",
+    "response_id": "ldtnah29y6806fnpj0pg0ycpw7vd6pea7wg1xbci"
+  }
+}

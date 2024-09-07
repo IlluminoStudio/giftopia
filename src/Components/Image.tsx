@@ -5,28 +5,38 @@ import missingImage from '../Assets/missing-200.png';
 
 interface ImageProps {
   image: ImageType;
+  onFavouriteToggle: (id: string) => void;
 }
 
-const Image: React.FC<ImageProps> = ({ image }) => {
+const Image: React.FC<ImageProps> = ({ image, onFavouriteToggle }) => {
   const [isHovered, setIsHovered] = useState(false);
+  //  eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [src, setSrc] = useState(image.fixed_width_url);
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div 
+    <div
       className="image-wrapper"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ width: FIXED_IMAGE_WIDTH }}
+      style={{ width: FIXED_IMAGE_WIDTH, position: 'relative' }} // Enable relative positioning
     >
-      <img 
-        src={hasError ? missingImage : src} 
-        className="image" 
-        alt={image.alt_text} 
-        onError={() => setHasError(true)} 
+      <img
+        src={hasError ? missingImage : src}
+        className="image"
+        alt={image.title}
+        onError={() => setHasError(true)}
         style={{ width: FIXED_IMAGE_WIDTH }}
       />
-      {isHovered && <div className="alt-text">{image.alt_text}</div>}
+      {/* Favourite button floating on top of the image */}
+      <button
+        onClick={() => onFavouriteToggle(image.id)}
+        className={`favourite-button ${image.favourite ? 'favourited' : ''}`}
+      >
+        {image.favourite ? '★' : '☆'} {/* Star icon */}
+      </button>
+
+      {isHovered && <div className="alt-text">{image.title}</div>}
     </div>
   );
 };
