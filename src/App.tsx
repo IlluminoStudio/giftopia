@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import ImageList from './Components/ImageList';
-import Header from './Components/Header'; // Import Header
-import SearchBar from './Components/SearchBar'; // Import SearchBar
-import { fetchImages } from './utils/fetchImages'; // Import fetchImages
-import { doSearch } from './utils/doSearch'; // Import handleSearch
+import Header from './Components/Header';
+import SearchBar from './Components/SearchBar';
+import { ErrorBoundary } from './Components/ErrorBoundary';
+import { fetchImages } from './utils/fetchImages';
+import { doSearch } from './utils/doSearch';
 
 export default function App() {
 const [images, setImages] = useState([]);
@@ -18,8 +19,10 @@ useEffect(() => {
 return (
   <div className="App">
     <Header />    
-    <ImageList images={images} />
-    <SearchBar onSearch={(searchTerm) => doSearch(setImages, setShowingTrending, searchTerm)} /> {/* Use handleSearch from doSearch */}
+    <ErrorBoundary fallback={<p>There was an error loading gifs. Please try again.</p>}>
+      <ImageList images={images} />
+    </ErrorBoundary>
+    <SearchBar onSearch={(searchTerm) => doSearch(setImages, setShowingTrending, searchTerm)} />
   </div>
 );
 }

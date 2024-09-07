@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ImageType } from './types';
-import { FIXED_IMAGE_WIDTH } from '../config';
 import missingImage from '../Assets/missing-200.png';
 
 interface ImageProps {
@@ -19,21 +18,18 @@ const Image: React.FC<ImageProps> = ({ image, onFavouriteToggle }) => {
       className="image-wrapper"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ width: FIXED_IMAGE_WIDTH, position: 'relative' }} // Enable relative positioning
     >
       <img
         src={hasError ? missingImage : src}
         className="image"
         alt={image.title}
         onError={() => setHasError(true)}
-        style={{ width: FIXED_IMAGE_WIDTH }}
       />
-      {/* Favourite button floating on top of the image */}
       <button
         onClick={() => onFavouriteToggle(image.id)}
         className={`favourite-button ${image.favourite ? 'favourited' : ''}`}
       >
-        {image.favourite ? '★' : '☆'} {/* Star icon */}
+        {image.favourite ? '★' : '☆'}
       </button>
 
       {isHovered && <div className="alt-text">{image.title}</div>}

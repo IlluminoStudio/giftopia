@@ -20,10 +20,10 @@ export const fetchImages = async (searchTerm?: string) => {
     if (data.data) {
       const receivedImages = data.data.map((item: any) => {
         return {
-          id: `${item.id}_${Date.now()}`, // Add timestamp to ensure uniqueness
-          title: item.title,
+          id: `${item.id}_${Date.now()}`, // Giphy may return duplicate GIFs
+          title: item.title && item.title.length > 0 ? item.title : "An awesome GIF from Gyphi",
           fixed_width_url: item.images.fixed_width.url,
-          favourite: false, // Set default value to false
+          favourite: false,
         };
       });
       // console.log("Received images:", receivedImages);

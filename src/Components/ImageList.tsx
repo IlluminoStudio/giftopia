@@ -16,14 +16,13 @@ const ImageList: React.FC<{ images: ImageType[] }> = ({ images }) => {
       const baseId = stripTimestampFromId(image.id);
       return {
         ...image,
-        favourite: favouritesFromStorage[baseId] || false, // Apply favourite if stored
+        favourite: favouritesFromStorage[baseId] || false,
       };
     });
 
     setDisplayingImages(imagesWithFavourites);
   }, [images]);
 
-  // Handle favourite toggling
   const handleFavouriteToggle = (id: string) => {
     const updatedImages = displayingImages.map((img) =>
       img.id === id ? { ...img, favourite: !img.favourite } : img
@@ -34,7 +33,7 @@ const ImageList: React.FC<{ images: ImageType[] }> = ({ images }) => {
     const favourites = updatedImages.reduce((acc, img) => {
       const baseId = stripTimestampFromId(img.id);
       if (img.favourite) {
-        acc[baseId] = true;  // Store base ID only
+        acc[baseId] = true;
       }
       return acc;
     }, {} as Record<string, boolean>);

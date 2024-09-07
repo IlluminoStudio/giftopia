@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
 :root {
+  font-size: 100%; /* Ensures 1rem = 16px by default */
+  
   --primary-700: #FF6F6F;
   --primary-500: #FF8A8A;
   --primary-400: #FFA3A3;
@@ -27,16 +39,17 @@
   --fixed-image-width: 200px; /* per FIXED_IMAGE_WIDTH from config.ts */
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--secondary-400); /* Restore background color */
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background-color: var(--secondary-500);
 }
 
 .App {
@@ -96,13 +109,15 @@ code {
 
 .image {
   max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
-  width: var(--fixed-image-width);
 }
 
 .image-wrapper {
+  width: var(--fixed-image-width);
   position: relative;
+  margin: 10px;
   display: inline-block;
 }
 
@@ -127,11 +142,11 @@ code {
 }
 
 .image-list {
-  max-width: 1200px; /* Set a maximum width */
+  max-width: 1200px;
   margin: 0 auto; /* Center the content */
-  padding: 20px; /* Add some padding */
+  padding: 20px;
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap */
+  flex-wrap: wrap; 
   justify-content: center; /* Center items horizontally */
 }
 
@@ -142,56 +157,55 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* Add relative positioning */
+  position: relative;
 }
 
 .header-icon {
-  height: 5rem; /* Set height relative to the font size of the header-title */
-  margin-right: 10px; /* Space between icon and text */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  height: 5rem;
+  margin-right: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .header-title {
   font-size: 3rem;
   color: var(--neutral-000);
   margin: 0;
-  transform: rotate(-10deg); /* Tilt the text */
+  transform: rotate(-10deg);
   display: flex;
   align-items: center; /* Align items vertically */
 }
 
 .giphy-logo {
-  position: absolute; /* Position the logo absolutely */
-  top: 5px; /* Adjust the top position */
-  right: 5px; /* Adjust the right position */
-  height: 25px; /* Set a height for the logo */
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 25px;
 }
 
 .image-wrapper {
-  margin: 10px; /* Add some margin around each image */
+  margin: 10px;
 }
 
 .search-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0; /* Add some margin above and below */
+  margin: 20px 0;
 }
 
 .search-input {
   font-family: inherit;
-  width: 300px; /* Set custom width */
+  width: 300px;
   padding: 8px;
-  border: 1px solid var(--secondary-400); /* Default border color */
+  border: 1px solid var(--secondary-400);
   border-radius: 4px;
   outline: none;
 }
 
 .search-input:focus {
-  border-color: var(--primary-500); /* Border color on focus */
+  border-color: var(--primary-500);
 }
 
-/* Add these styles to the end of your App.css file */
 .favourite-button {
   position: absolute;
   top: 10px;
@@ -201,10 +215,10 @@ code {
   cursor: pointer;
   font-size: 20px;
   z-index: 10;
-  background: var(--neutral-000); /* Use neutral color for default background */
-  color: var(--primary-700); /* Use primary color for text */
-  opacity: 0.8; /* Make the button a little bit transparent */
-  transition: transform 0.3s; /* Smooth transition for the transform property */
+  background: var(--neutral-000);
+  color: var(--primary-700);
+  opacity: 0.8;
+  transition: transform 0.3s;
 }
 
 .favourite-button:active {
@@ -212,8 +226,8 @@ code {
 }
 
 .favourited {
-  background: var(--primary-500); /* Use primary color when favourited */
-  color: var(--neutral-000); /* Use neutral color for text */
+  background: var(--primary-500);
+  color: var(--neutral-000);
 }
 
 .display-search-term {
@@ -221,10 +235,10 @@ code {
   white-space: nowrap;
   border: none;
   background-color: var(--secondary-400);
-  color: var(--primary-700); /* Assuming the text color of 'search-input' is var(--primary-700) */
+  color: var(--primary-700);
   width: auto;
-  padding: 8px; /* Add padding for better appearance */
-  font-family: inherit; /* Ensure consistent font */
+  padding: 8px;
+  font-family: inherit;
 }
 @keyframes favourite-bounce {
   0%, 100% {
