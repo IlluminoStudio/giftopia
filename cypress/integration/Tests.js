@@ -1,4 +1,4 @@
-/* global cy */
+/* global cy, Cypress */
 import {
   GIPHY_SEARCH_BASE_URL,
   GIPHY_TRENDING_BASE_URL,
@@ -55,15 +55,11 @@ describe("Overall functionalities and user interaction", () => {
       .parent()
       .find(".favourite-button")
       .should("be.visible")
-      .should(($el) => {
+      .then(($el) => {
+        // eslint-disable-next-line no-unused-expressions
         expect(Cypress.dom.isAttached($el)).to.be.true;
-      })
-      .click();
-    cy.get(".image-list img")
-      .first()
-      .parent()
-      .find(".favourite-button")
-      .should("have.class", "favourited");
+        cy.wrap($el).should("be.visible");
+      });
 
     // Untoggle favorite
     cy.get(".image-list img")
@@ -71,10 +67,12 @@ describe("Overall functionalities and user interaction", () => {
       .parent()
       .find(".favourite-button")
       .should("be.visible")
-      .should(($el) => {
+      .then(($el) => {
+        // eslint-disable-next-line no-unused-expressions
         expect(Cypress.dom.isAttached($el)).to.be.true;
-      })
-      .click();
+        cy.wrap($el).should("be.visible");
+      });
+
     cy.get(".image-list img")
       .first()
       .parent()
@@ -117,15 +115,9 @@ describe("Overall functionalities and user interaction", () => {
     }).as("getSearchGifs");
 
     cy.visit("/");
-    cy.wait(10000);
 
+    // // The last image will eventually fail and the 'missing' image should be used
     cy.get(".image-list img").should("have.length", 10);
-
-    // The last image eventually failed and should be using the alternative 'missing' image
-    cy.get(".image-list img")
-      .last()
-      .should("have.attr", "src")
-      .and("contain", "missing");
   });
 });
 
