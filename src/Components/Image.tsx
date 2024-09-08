@@ -20,6 +20,7 @@ const Image: React.FC<ImageProps> = ({ image, onFavouriteToggle }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
+        id={`image-${image.id}`}
         src={hasError ? missingImage : src}
         className="image"
         alt={image.title}

@@ -6,7 +6,15 @@ interface ErrorBoundaryProps {
   fallback?: ReactNode;
 }
 
-function ErrorFallback({ error, resetErrorBoundary }: { error: Error; resetErrorBoundary: () => void }) {
+function ErrorFallback({
+  error,
+  resetErrorBoundary,
+}: {
+  error: Error;
+  resetErrorBoundary: () => void;
+}) {
+  console.error("Error caught by ErrorBoundary:", error);
+
   return (
     <div role="alert">
       <p>Oops!</p>
@@ -16,11 +24,14 @@ function ErrorFallback({ error, resetErrorBoundary }: { error: Error; resetError
   );
 }
 
-export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback }) => {
+export const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({
+  children,
+  fallback,
+}) => {
   const [key, setKey] = useState(0);
 
   const handleReset = () => {
-    setKey(prevKey => prevKey + 1);
+    setKey((prevKey) => prevKey + 1);
   };
 
   return (

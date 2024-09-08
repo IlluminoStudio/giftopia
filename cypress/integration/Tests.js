@@ -4,7 +4,7 @@ import {
   GIPHY_TRENDING_BASE_URL,
 } from "../../src/config";
 
-describe("Overall correctness", () => {
+describe("Overall functionalities and user interaction", () => {
   beforeEach(() => {
     cy.intercept("GET", `${GIPHY_TRENDING_BASE_URL}*`, {
       fixture: "5Images.json",
@@ -54,6 +54,10 @@ describe("Overall correctness", () => {
       .first()
       .parent()
       .find(".favourite-button")
+      .should("be.visible")
+      .should(($el) => {
+        expect(Cypress.dom.isAttached($el)).to.be.true;
+      })
       .click();
     cy.get(".image-list img")
       .first()
@@ -66,6 +70,10 @@ describe("Overall correctness", () => {
       .first()
       .parent()
       .find(".favourite-button")
+      .should("be.visible")
+      .should(($el) => {
+        expect(Cypress.dom.isAttached($el)).to.be.true;
+      })
       .click();
     cy.get(".image-list img")
       .first()
@@ -102,6 +110,23 @@ describe("Overall correctness", () => {
       .find(".favourite-button")
       .should("have.class", "favourited");
   });
+
+  it("When failed to retrieve individual GIFs", () => {
+    cy.intercept("GET", `${GIPHY_TRENDING_BASE_URL}*`, {
+      fixture: "10ImagesWithError.json",
+    }).as("getSearchGifs");
+
+    cy.visit("/");
+    cy.wait(10000);
+
+    cy.get(".image-list img").should("have.length", 10);
+
+    // The last image eventually failed and should be using the alternative 'missing' image
+    cy.get(".image-list img")
+      .last()
+      .should("have.attr", "src")
+      .and("contain", "missing");
+  });
 });
 
 describe("Trending GIFs", () => {
@@ -135,9 +160,9 @@ describe("Trending GIFs", () => {
     cy.intercept("GET", `${GIPHY_TRENDING_BASE_URL}*`, {
       fixture: "0Image.json",
     }).as("getTrendingGifs");
-    
+
     cy.visit("/");
-   
+
     cy.wait("@getTrendingGifs");
 
     cy.get(".no-gifs-message").should("be.visible").and("contain", "coffee");
@@ -157,7 +182,7 @@ describe("Search GIFs", () => {
 
   it("When Search API respond with 200", () => {
     cy.visit("/");
-    
+
     cy.wait("@getTrendingGifs");
 
     searchSomething("bean");

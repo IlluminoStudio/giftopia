@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import Image from './Image';
-import { ImageType } from './types';
+import React, { useEffect, useState } from "react";
+import Image from "./Image";
+import { ImageType } from "./types";
 
 const ImageList: React.FC<{ images: ImageType[] }> = ({ images }) => {
   const [displayingImages, setDisplayingImages] = useState(images);
 
   // Function to strip the timestamp from the ID
-  const stripTimestampFromId = (id: string) => id.split('_')[0];
+  const stripTimestampFromId = (id: string) => id.split("_")[0];
 
   // Load favourites from localStorage
   useEffect(() => {
-    const favouritesFromStorage = JSON.parse(localStorage.getItem('favourites') || '{}');
-    
-    const imagesWithFavourites = images.map(image => {
+    const favouritesFromStorage = JSON.parse(
+      localStorage.getItem("favourites") || "{}"
+    );
+
+    const imagesWithFavourites = images.map((image) => {
       const baseId = stripTimestampFromId(image.id);
       return {
         ...image,
@@ -37,14 +39,16 @@ const ImageList: React.FC<{ images: ImageType[] }> = ({ images }) => {
       }
       return acc;
     }, {} as Record<string, boolean>);
-    
-    localStorage.setItem('favourites', JSON.stringify(favourites));
+
+    localStorage.setItem("favourites", JSON.stringify(favourites));
   };
 
   return (
     <div className="image-list">
       {displayingImages.length === 0 ? (
-        <p className="no-gifs-message">Yikes! The GIFs took a coffee break ☕. Search again to wake them up!</p>
+        <p className="no-gifs-message">
+          Yikes! The GIFs took a coffee break ☕. Search again to wake them up!
+        </p>
       ) : (
         displayingImages.map((image) => (
           <Image
@@ -59,7 +63,6 @@ const ImageList: React.FC<{ images: ImageType[] }> = ({ images }) => {
 };
 
 export default ImageList;
-
 
 // const sampleImages: ImageType[] = [
 //   {

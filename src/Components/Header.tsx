@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <header className="header">
       <img src={`${process.env.PUBLIC_URL}/favicon.ico`} alt="favicon" className="header-icon" />
       <h1 className="header-title">{APP_NAME}</h1>
-      <img src={giphyLogo} alt="Giphy Logo" className="giphy-logo" />
+      <img src={giphyLogo} alt="Powered By Giphy" className="giphy-logo" />
     </header>
   );
 };

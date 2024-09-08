@@ -234,7 +234,7 @@ body {
   display: inline-block;
   white-space: nowrap;
   border: none;
-  background-color: var(--secondary-400);
+  background-color: var(--secondary-500);
   color: var(--primary-700);
   width: auto;
   padding: 8px;

@@ -79,7 +79,7 @@
       "title": "Surprised Pikachu GIF",
       "images": {
         "fixed_width": {
-          "url": "https://foo"
+          "url": "https://media3.giphy.com/media/Uk061VK3fszBv2II8v/200w.gif?cid=613e78cazsqcq2093q2vtv4hbsob36r5ahk6xfekj3qedce4&ep=v1_gifs_trending&rid=200w.gif&ct=g"
         }
       }
     },
@@ -88,7 +88,7 @@
       "title": "Thumbs up GIF",
       "images": {
         "fixed_width": {
-          "url": "https://bar"
+          "url": "https://foo"
         }
       }
     }
